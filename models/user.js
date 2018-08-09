@@ -6,22 +6,19 @@ class User {
         this.password = user.password
         this.email = user.email
     }
-    save() {
+    save(callback) {
         let user = {
-            name:this.name,
-            password:this.password,
-            email:this.email
+            name: this.name,
+            password: this.password,
+            email: this.email
         }
         const instance = new mongo(user)
-        instance.save(err=>{
-            if(!err)console.log('success!');
+        instance.save(function (err) {
+            return callback && callback(err,user)
         })
     }
-    get(condition) {
-    mongo.find(condition,function (err,data) {
-            if(err) throw err;
-            console.log(data);
-        })
+    get(condition, callback) {
+        mongo.find(condition, callback)
     }
 }
 module.exports = User
