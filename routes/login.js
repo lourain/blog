@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto')
-var User = require('../models/user')
+var User = require('../lib/user')
+var check = require('../lib/check')
 
+router.get('/', check.checkLogin)
 router.get('/', function (req, res, next) {
     res.render('login', { title: '这是主页', user: req.session.user, success: req.flash('success').toString(), err: req.flash('err').toString() });
 });
@@ -17,7 +19,7 @@ router.post('/',function (req,res) {
         name:name,
         password:password
     })
-    loginUser.get({name:name},function (err,user) {
+    loginUser.get({'name':name},function (err,user) {
         if(err){
             req.flash('err',err)
             return res.redirect('/login')
@@ -38,4 +40,5 @@ router.post('/',function (req,res) {
     })
     //查询密码是否正确
 })
+
 module.exports = router;

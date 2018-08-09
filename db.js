@@ -9,10 +9,19 @@ db.on('open',function () {
 })
 //定义一个schema
 const Schema = mongoose.Schema
-const Blog = new Schema({
+const users = new Schema({
     name: String,
     password: String,
     email: String
 })
-const MyModel = mongoose.model('myblog',Blog)
+const article = new Schema({
+    name:String,
+    time: String,
+    title: String,
+    content: String
+})
+const MyModel = {
+    users:mongoose.model('users', users),
+    article: mongoose.model('article', article)
+}
 module.exports = MyModel

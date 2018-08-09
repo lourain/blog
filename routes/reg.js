@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var crypto = require('crypto')
-var User = require('../models/user')
+var User = require('../lib/user')
+var check = require('../lib/check')
 
-
+router.get('/', check.checkLogin)
 router.get('/', function (req, res, next) {
     res.render('reg', { title: '注册', user: req.session.user, success: req.flash('success').toString(), err: req.flash('err').toString()});
 });
