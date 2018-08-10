@@ -22,6 +22,6 @@ const article = new Schema({
 })
 const MyModel = {
     users:mongoose.model('users', users),
-    article: mongoose.model('article', article)
+    article: mongoose.model('articles', article)
 }
 module.exports = MyModel
