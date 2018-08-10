@@ -12,6 +12,7 @@ var regRouter = require('./routes/reg.js');
 var usersRouter = require('./routes/users');
 var logoutRouter = require('./routes/logout');
 var postRouter = require('./routes/post');
+var uploadRouter = require('./routes/upload')
 
 var app = express();
 
@@ -27,13 +28,13 @@ app.use(session({secret:'node-blog',resave:true,saveUninitialized:true,name:'ses
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash())
 
-
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/reg', regRouter);
 app.use('/logout', logoutRouter);
 app.use('/users', usersRouter);
 app.use('/post', postRouter);
+app.use('/upload', uploadRouter)
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
