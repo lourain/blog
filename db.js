@@ -16,7 +16,7 @@ const users = new Schema({
 })
 const article = new Schema({
     name:String,
-    time: String,
+    time: Object,
     title: String,
     content: String
 })
