@@ -9,7 +9,7 @@ var flash = require('connect-flash')
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var regRouter = require('./routes/reg.js');
-var usersRouter = require('./routes/users');
+var userRouter = require('./routes/user');
 var logoutRouter = require('./routes/logout');
 var postRouter = require('./routes/post');
 var uploadRouter = require('./routes/upload')
@@ -32,7 +32,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/reg', regRouter);
 app.use('/logout', logoutRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/upload', uploadRouter)
 //catch 404 and forward to error handler

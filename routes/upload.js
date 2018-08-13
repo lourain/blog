@@ -25,6 +25,7 @@ router.get('/',check.checkNotLogin)
 router.get('/', function (req,res,next) {
     res.render('upload',{title:"文件上传",user:req.session.user,success:req.flash('success').toString(),err:req.flash('err').toString()})
 })
+
 router.post('/', upload.any(),function (req,res) {
     console.log(req.files);
     rename(`${dest_path}\\${req.files[0].filename}`,`${dest_path}\\${req.files[0].originalname}`)
