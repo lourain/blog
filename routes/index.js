@@ -3,7 +3,7 @@ var router = express.Router();
 var article = require('../lib/article')
 
 router.get('/', function (req, res, next) {
-  new article().get(null,function (err,articles) {
+  new article().getAll(null,function (err,articles) {
     if(err){
       throw err;
     }

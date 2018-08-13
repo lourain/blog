@@ -16,9 +16,9 @@ const users = new Schema({
 })
 const article = new Schema({
     name:String,
-    time: Object,
     title: String,
-    content: String
+    content: String,
+    time: Object
 })
 const MyModel = {
     users:mongoose.model('users', users),
