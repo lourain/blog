@@ -32,7 +32,7 @@ router.post('/', function (req, res, next) {
             req.flash('err', err)
             return res.redirect('/reg')
         }
-        if (user[0].name) {
+        if (user[0]) {
             req.flash('err', '用户已存在！')
             return res.redirect('/reg')
         }
