@@ -25,7 +25,7 @@ router.get('/:name', function (req, res, next) {
   })
 })
 router.get('/:name/:day/:title',function (req,res) {
-  new Article().getOne({ name: req.params.name,title:req.params.title},function (doc) {
+  new Article().getOne({ name: req.params.name,'time.day':req.params.day,title:req.params.title},function (doc) {
     res.render('article',{
       title: req.params.title,
       article:doc,
