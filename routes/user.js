@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var User = require('../lib/user')
 var Article = require('../lib/article')
+var check = require('../lib/check')
 
+router.get('/:name',check.checkNotLogin)
 router.get('/:name', function (req, res, next) {
   //检查用户是否存在
   let user_name = req.params.name
@@ -24,6 +26,8 @@ router.get('/:name', function (req, res, next) {
     })
   })
 })
+
+router.get('/:name/:day/:title', check.checkNotLogin)
 router.get('/:name/:day/:title',function (req,res) {
   new Article().getOne({ name: req.params.name,'time.day':req.params.day,title:req.params.title},function (doc) {
     res.render('article',{

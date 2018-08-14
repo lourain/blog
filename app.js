@@ -14,6 +14,7 @@ var logoutRouter = require('./routes/logout');
 var postRouter = require('./routes/post');
 var uploadRouter = require('./routes/upload')
 var editRouter = require('./routes/edit')
+var removeRouter = require('./routes/remove')
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/upload', uploadRouter)
 app.use('/edit', editRouter)
+app.use('/remove', removeRouter)
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
