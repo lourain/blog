@@ -18,7 +18,8 @@ const article = new Schema({
     name:String,
     title: String,
     content: String,
-    time: Object
+    time: Object,
+    comments:Array
 })
 const MyModel = {
     users:mongoose.model('users', users),
