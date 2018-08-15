@@ -4,10 +4,10 @@
         <a href="<%= comment.website %>"><%= comment.name%></a>
         <span class="info">回复于 <%= comment.time %></span>
     </p>
-    <p><%- comment.content %></p>
+    <p><%- comment.comment %></p>
 <%})%>
 
-<form action="" method="post">
+<form  method="post">
 <%if(user){%>
     姓名：<input type="text" name="name" value="<%=user.name%>" /><br/>        
     邮箱：<input type="text" name="email" value="<%=user.emai%>" /><br/>     

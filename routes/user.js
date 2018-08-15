@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../lib/user')
 var Article = require('../lib/article')
 var check = require('../lib/check')
+var Comment = require('../lib/comment')
 
 router.get('/:name',check.checkNotLogin)
 router.get('/:name', function (req, res, next) {
@@ -40,5 +41,25 @@ router.get('/:name/:day/:title',function (req,res) {
   })
 })
 
+//提交评论
+router.post('/:name/:day/:title',function (req,res) {
+  let date = new Date()
+  let time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}  ${date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`
+  let cmt_info = {
+    name:req.body.name,
+    email:req.body.email,
+    website:req.body.website,
+    time:time,
+    comment: req.body.content
+  }
+  new Comment({name:req.params.name,time:req.params.day,title:req.params.title}).save(cmt_info,function(err,data){
+    if(err){
+      req.flash('err','评论失败')
+      return res.redirect('back')
+    }
+    req.flash('success','评论成功')
+    res.redirect('back')
+  })
+})
 module.exports = router;
  
