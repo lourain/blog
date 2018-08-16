@@ -65,3 +65,9 @@ article a:hover{
   color: #fff;
   transform: color .2s linear;
 }
+.prepage a{
+  float: left;
+  text-decoration: none;
+  padding: .5em 1em;
+  color:#ff0000;
+}
