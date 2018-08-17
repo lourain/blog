@@ -16,6 +16,7 @@ var uploadRouter = require('./routes/upload')
 var editRouter = require('./routes/edit')
 var removeRouter = require('./routes/remove')
 var archiveRouter = require('./routes/archive')
+var tagsRouter = require('./routes/tags')
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/upload', uploadRouter)
 app.use('/edit', editRouter)
 app.use('/remove', removeRouter)
 app.use('/archive', archiveRouter)
+app.use('/tags', tagsRouter)
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
