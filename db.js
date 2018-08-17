@@ -17,6 +17,7 @@ const users = new Schema({
 const article = new Schema({
     name:String,
     title: String,
+    tags:Array,
     content: String,
     time: Object,
     comments:Array

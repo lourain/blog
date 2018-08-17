@@ -10,11 +10,13 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     var name = req.session.user.name,
         title = req.body.title,
+        tags = [req.body.tag1, req.body.tag2, req.body.tag3],
         content = req.body.content;
 
     let newArticle = new article({
         name: name,
         title: title,
+        tags: tags,
         content: content
     })
     newArticle.save(function (err) {

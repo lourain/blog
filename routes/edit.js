@@ -18,7 +18,8 @@ router.get('/:name/:day/:title', function (req, res, next) {
 //修改文章
 router.post('/:name/:day/:title', function (req, res) {
     let url = encodeURI(`/user/${req.params.name}/${req.params.day}/${req.params.title}`)
-    new Article().update({ name: req.params.name, 'time.day': req.params.day, title: req.params.title }, { content: req.body.content },function(err){
+    let tags = [req.body.tag1,req.body.tag2,req.body.tag3]
+    new Article().update({ name: req.params.name, 'time.day': req.params.day, title: req.params.title }, { tags:tags,content: req.body.content },function(err){
         if(err){
             req.flash('err','修改出错！')
             return res.redirect(url)

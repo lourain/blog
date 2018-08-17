@@ -15,6 +15,12 @@
                 </a>
                 日期：
                 <%= article.time.minute%>
+                标签：
+                <% article.tags.forEach(function(tag){ %>
+                <%if(tag){%>
+                    <a class="tag" href="/tags/<%= tag %>"><%=tag%></a>                    
+                <%}%>    
+                <% }) %>
             </p>
             <p>
                 <%- article.content%>
