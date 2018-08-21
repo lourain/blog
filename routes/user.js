@@ -4,6 +4,7 @@ var User = require('../lib/user')
 var Article = require('../lib/article')
 var check = require('../lib/check')
 var Comment = require('../lib/comment')
+var crypto = require('crypto')
 
 router.get('/:name',check.checkNotLogin)
 router.get('/:name', function (req, res, next) {
@@ -49,11 +50,15 @@ router.get('/:name/:day/:title',function (req,res) {
 router.post('/:name/:day/:title',function (req,res) {
   let date = new Date()
   let time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}  ${date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`
+  var md5 = crypto.createHash('md5')
+  var md5_email = md5.update(req.body.email.toLowerCase()).digest('hex')
+  var head = `http://www.gravatar.com/avatar/${md5_email}?s=20&d=identicon`
   let cmt_info = {
-    name:req.body.name,
-    email:req.body.email,
-    website:req.body.website,
-    time:time,
+    name: req.body.name,
+    email: req.body.email,
+    website: req.body.website,
+    head:head,
+    time: time,
     comment: req.body.content
   }
   new Comment({name:req.params.name,time:req.params.day,title:req.params.title}).save(cmt_info,function(err,data){

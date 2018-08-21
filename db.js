@@ -12,7 +12,8 @@ const Schema = mongoose.Schema
 const users = new Schema({
     name: String,
     password: String,
-    email: String
+    email: String,
+    head:String
 })
 const article = new Schema({
     name:String,
@@ -21,7 +22,8 @@ const article = new Schema({
     content: String,
     time: Object,
     comments:Array,
-    pv:Number
+    pv:Number,
+    head: String
 })
 const MyModel = {
     users:mongoose.model('users', users),
