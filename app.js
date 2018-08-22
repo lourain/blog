@@ -18,7 +18,7 @@ var removeRouter = require('./routes/remove')
 var archiveRouter = require('./routes/archive')
 var tagsRouter = require('./routes/tags')
 var searchRouter = require('./routes/search')
-var reprintRouter = require('./routes/reprint')
+
 
 var app = express();
 

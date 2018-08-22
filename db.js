@@ -23,7 +23,7 @@ const article = new Schema({
     time: Object,
     comments:Array,
     pv:Number,
-    head: String
+    head: String,
 })
 const MyModel = {
     users:mongoose.model('users', users),

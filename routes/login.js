@@ -24,7 +24,7 @@ router.post('/',function (req,res) {
             req.flash('err',err)
             return res.redirect('/login')
         }
-        if(user.name){
+        if(!user[0].name){
             req.flash('err','该用户不存在！')
             return res.redirect('/login')
         }
