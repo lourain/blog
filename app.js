@@ -6,6 +6,8 @@ var session = require('express-session')
 var logger = require('morgan');
 var flash = require('connect-flash')
 
+
+
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var regRouter = require('./routes/reg.js');
@@ -18,8 +20,7 @@ var removeRouter = require('./routes/remove')
 var archiveRouter = require('./routes/archive')
 var tagsRouter = require('./routes/tags')
 var searchRouter = require('./routes/search')
-
-
+var authRouter = require('./routes/auth')
 var app = express();
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({secret:'node-blog',resave:true,saveUninitialized:true,name:'sess_id'}))
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(flash())
 
 app.use('/', indexRouter);
@@ -46,7 +48,7 @@ app.use('/remove', removeRouter)
 app.use('/archive', archiveRouter)
 app.use('/tags', tagsRouter)
 app.use('/search', searchRouter)
-app.use('/reprint', reprintRouter)
+app.use('/auth', authRouter)
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,5 +65,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
